@@ -1,0 +1,26 @@
+version: '3.0'
+
+services:
+  mysql-picture-sod-db:
+    image: mysql:latest
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=picture_sod
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+  spring-boot-picture-sod:
+    image: felix/picture-sod
+    depends_on:
+      - mysql-picture-sod-db
+    volumes:
+      - /tmp/uploading:/tmp
+    ports:
+      - 8082:8082
+    environment:
+      - DATABASE_HOST=mysql-picture-sod-db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=picture_sod
+      - DATABASE_PORT=3306

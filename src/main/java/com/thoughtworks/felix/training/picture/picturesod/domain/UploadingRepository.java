@@ -8,8 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.thoughtworks.felix.training.picture.picturesod.domain.UploadingConstant.*;
-
 @Repository
 public class UploadingRepository {
     public void saveUploading(MultipartFile file) {
